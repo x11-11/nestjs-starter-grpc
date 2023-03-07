@@ -24,7 +24,11 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Minimal nestjs grpc starter
+
+replace proto under submodule src/proto
+default http port:8080
+default grpc port:8888
 
 ## Installation
 
