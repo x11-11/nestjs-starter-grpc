@@ -2,7 +2,11 @@ import fs from 'fs';
 import path from 'path';
 import { NestFactory, NestApplication } from '@nestjs/core';
 import { ValidationPipe, Logger } from '@nestjs/common';
-import { Transport, MicroserviceOptions, GrpcOptions } from '@nestjs/microservices';
+import {
+  Transport,
+  MicroserviceOptions,
+  GrpcOptions,
+} from '@nestjs/microservices';
 import { configService } from './common/config.service';
 import { AppModule } from './app.module';
 
@@ -25,13 +29,11 @@ async function bootstrap() {
   await setupSwagger(app);
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
 
-
   await app.startAllMicroservices();
   await app.listen(httpPort);
 
   Logger.log(`Application is running on: ${await app.getUrl()}`);
   Logger.log(`Grpc is running on: ${grpcOptions.options.url}`);
-
 }
 bootstrap();
 /**
