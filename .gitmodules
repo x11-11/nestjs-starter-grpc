@@ -1,0 +1,3 @@
+[submodule "src/proto"]
+	path = src/proto
+	url = git@github.com:x11-11/theapp-protobuf.git

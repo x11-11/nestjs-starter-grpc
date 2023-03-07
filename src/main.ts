@@ -16,9 +16,9 @@ async function bootstrap() {
   const grpcOptions: GrpcOptions = {
     transport: Transport.GRPC,
     options: {
-      url: `localhost:${grpcPort}`, //grpc requires domain name host(for http2 cert)
+      url: `0.0.0.0:${grpcPort}`, //grpc requires domain name host(for http2 cert)
       package: ['traefik'],
-      protoPath: ['proto/traefik.proto'],
+      protoPath: [__dirname + '/proto/modules/traefik.proto'],
     },
   };
   //main http

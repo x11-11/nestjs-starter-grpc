@@ -1,9 +1,12 @@
-import { Controller } from '@nestjs/common';
+import { Controller, UseFilters } from '@nestjs/common';
 import { GrpcMethod, MessagePattern, Payload } from '@nestjs/microservices';
 import { TraefikService } from './traefik.service';
 import { CreateTraefikDto } from './dto/create-traefik.dto';
 import { UpdateTraefikDto } from './dto/update-traefik.dto';
 
+import { ToRpcException } from 'src/filters/ToRpcException.filter';
+
+@UseFilters(new ToRpcException()) //translate app exceptions to rpc exceptions
 @Controller()
 export class TraefikController {
   constructor(private readonly traefikService: TraefikService) {}
